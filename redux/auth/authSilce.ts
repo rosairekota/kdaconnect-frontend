@@ -1,3 +1,4 @@
+import { registerUserAsync } from './asynchQueries';
 import { IUser } from './../../src/interfaces/IUser';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -14,7 +15,7 @@ const initialState: authState = {
   isAuthenticated: false,
   error: '',
 };
-const authSlice = createSlice({
+const AuthSlice = createSlice({
   name: 'authSilce',
   initialState,
   reducers: {
@@ -22,6 +23,11 @@ const authSlice = createSlice({
       state.users.push(payload);
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(registerUserAsync.fulfilled, (state, action: PayloadAction<IUser>) => {
+      state.users.push(action.payload);
+    });
+  },
 });
 
-export default authSlice.reducer;
+export default AuthSlice.reducer;

@@ -7,7 +7,7 @@ const AuthStyle = styled.div<{ subTitle?: string }>`
   margin: auto;
   display: block;
   width: 100%;
-  max-width: 35rem;
+  min-width: 35rem;
   a {
     font-weight: 600;
   }

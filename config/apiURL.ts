@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const projectsApi = axios.create({
-  baseURL: 'http://localhost:4500',
+export const apiURL = axios.create({
+  baseURL: ' http://localhost:4500/api',
 });
