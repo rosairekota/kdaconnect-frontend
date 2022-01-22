@@ -1,5 +1,7 @@
 import Document, { DocumentContext } from 'next/document';
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -18,8 +20,10 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
+            <Provider store={store}>
+              {initialProps.styles}
+              {sheet.getStyleElement()}
+            </Provider>
           </>
         ),
       };
